@@ -46,3 +46,13 @@ CREATE TABLE ads
 	FOREIGN key ( user_id) references users(id)
 );
 
+
+CREATE TABLE common_cat_fields
+(
+	id int(11) NOT NULL AUTO_INCREMENT,
+	category_id int(11) not null,
+	name varchar(100) NOT NULL,
+	template_type varchar(100),
+	template_lov varchar(200)
+);
+
