@@ -55,7 +55,8 @@ CREATE TABLE common_cat_fields
 	name varchar(100) NOT NULL,
 	template_type varchar(100),
 	template_lov varchar(200),
-	
+
+	PRIMARY KEY (ID),
 	FOREIGN key ( category_id ) references categories(id)
 );
 
