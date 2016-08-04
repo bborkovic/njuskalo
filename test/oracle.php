@@ -1,14 +1,12 @@
-<?php 
-// Enable Error reporting
-error_reporting(E_ALL ^ E_DEPRECATED);
-// error_reporting(E_ALL);
-ini_set('display_errors', 1);
-
+<?php // error enable
+	// Enable Error reporting
+	error_reporting(E_ALL ^ E_DEPRECATED);
+	// error_reporting(E_ALL);
+	ini_set('display_errors', 1);
 ?>
 
-<?php 
-
-function insert_array( $conn, $sql, $bind_values=[]) {
+<?php // functions
+	function insert_array( $conn, $sql, $bind_values=[]) {
 		
 		$stid = oci_parse($conn,$sql);
 		if(!$stid) {
@@ -39,9 +37,6 @@ function insert_array( $conn, $sql, $bind_values=[]) {
 		}
 		return oci_num_rows($stid);
 	}
-
-
-
 ?>
 
 
@@ -50,12 +45,18 @@ function insert_array( $conn, $sql, $bind_values=[]) {
 // Create the table with:
 //   CREATE TABLE mytab (id NUMBER, text VARCHAR2(40));
 
-$conn = oci_connect('test', 'sifratt', 'localhost/XE');
+$conn = oci_connect('test', 'sifratt', '10.240.135.129/mjerenja.t.ht.hr', 'AL32UTF8');
 
-$ret = insert_array( $conn, "insert into numbers(i, j, text) values (:i, :j, :text)", $bind_values=[":i"=>12, ":j"=>12, ":text"=>'danas']);
+// $ret = insert_array( $conn, "insert into numbers(i, j, text) values (:i, :j, :text)", $bind_values=[":i"=>12, ":j"=>12, ":text"=>'danas']);
+// echo ($ret) ? "Insert success" : "Insert fail";
 
-echo "<br/>" . " Returned value is:" . "<br/>";
-var_dump($ret);
+$stmt = oci_parse($conn, "select text from numbers");
+oci_execute($stmt);
+
+while ($ret = oci_fetch_assoc($stmt)) {
+	echo "<br/>" . $ret['TEXT'];
+}
+
 
 
 oci_close($conn);
