@@ -62,9 +62,10 @@ if(!$session->is_logged_in()) { redirect_to("login.php"); }
 		</tbody>
 	</table>
 
-	<button type="button" class="btn btn-default">
-		<a href="categories_new.php?parent_cat_id=<?php echo $parent_cat_id; ?>">Create new category</a>
-	</button>
+
+		<a href="categories_new.php?parent_cat_id=<?php echo $parent_cat_id; ?>" class="btn btn-default">Create new category
+		</a>
+
 	
 
 
