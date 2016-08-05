@@ -107,7 +107,7 @@ class DatabaseObject {
 			return true;
 		} else {
 			return false;
-		}	
+		}
 	}
 
 	public function update() {

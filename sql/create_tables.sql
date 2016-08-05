@@ -58,16 +58,17 @@ CREATE TABLE common_fields
 	PRIMARY KEY (ID)
 );
 
-CREATE TABLE common_cat_fields
+CREATE TABLE category_common_fields
 (
 	id int(11) NOT NULL AUTO_INCREMENT,
 	category_id int(11) not null,
+	common_field_id int(11) not null,
 	
-	name varchar(100) NOT NULL,
 	template_type varchar(100),
 	template_lov varchar(200),
 
 	PRIMARY KEY (ID),
-	FOREIGN key ( category_id ) references categories(id)
+	FOREIGN key ( category_id ) references categories(id),
+	FOREIGN key ( common_field_id ) references common_fields(id)
 );
 

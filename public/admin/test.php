@@ -3,34 +3,10 @@
 	require_once('../../includes/initialize.php');
 
 	$category_id = 20;
-	$category = Category::find_by_id($category_id);
+	
 
-
-	// if( $category->has_children_category() ) {
-	// 	echo "Has child categoris";
-	// }
+$category_common_fields = CategoryCommonField::find_by_sql("select * from category_common_fields where category_id = :category_id" , [ ":category_id"=>$category_id ] );
 
 ?>	
 
-
-<!DOCTYPE html>
-<html>
-<head>
-	<title></title>
-</head>
-<body>
-
-	<?php if( $category->has_children_category() ): ?>
-		List all categories
-	<?php else: ?>
-		Display input form
-	<?php endif; ?>
-
-
-
-
-
-
-</body>
-</html>
 
