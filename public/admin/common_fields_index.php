@@ -23,6 +23,9 @@ if(!$session->is_logged_in()) { redirect_to("login.php"); }
 		<thead>
 			<tr>
 				<th>Field name</th>
+				<th>Template Type</th>
+				<th>Template LOV</th>
+				<th>Delete?</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -30,7 +33,13 @@ if(!$session->is_logged_in()) { redirect_to("login.php"); }
 		<?php foreach ($common_fields as $common_field): ?>
 			<tr>
 				<td>
-					<a href="common_fields_edit.php?id=<?php echo $common_field->id;?>"><?php echo $common_field->name; ?></a>
+					<a href="common_fields_edit.php?id=<?php echo $common_field->id; ?>"><?php echo $common_field->name; ?>
+					</a>
+				</td>
+				<td><?php echo $common_field->template_type; ?></td>
+				<td><?php echo $common_field->template_lov; ?></td>
+				<td>
+					<a href="common_fields_delete.php?id=<?php echo $common_field->id; ?>">Delete</a>
 				</td>
 			</tr>
 		<?php endforeach; ?>
@@ -39,7 +48,9 @@ if(!$session->is_logged_in()) { redirect_to("login.php"); }
 	</table>
 
 
-	<a href="categories_new.php?parent_cat_id=<?php echo $parent_cat_id; ?>" class="btn btn-default">Add new Common Field</a>
+	<a href="common_fields_new.php" class="btn btn-default">
+		Add new Common Field
+	</a>
 
 	
 

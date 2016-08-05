@@ -6,7 +6,11 @@ require_once('../../includes/initialize.php');
 <?php require_once(SITE_ROOT.DS.'public/layouts/admin_header.php'); ?>
 
 <div class="panel-body">
-	<a href="categories_index.php">Categories</a>
+
+	<?php output_message(); ?>
+	<p><a href="categories_index.php">Categories</a></p>
+	<p><a href="common_fields_index.php">Common Fields</a></p>
+	
 </div>
 
 <?php require_once(SITE_ROOT.DS.'public/layouts/admin_footer.php'); ?>

@@ -18,7 +18,7 @@ class User extends DatabaseObject {
 	public $email;
 
 
-	public function authenticate($username="", $password="") {
+	public static function authenticate($username="", $password="") {
 		global $database;
 		// $username = $database->escape_value($username);
 		// $password = $database->escape_value($password);
