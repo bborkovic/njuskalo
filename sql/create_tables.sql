@@ -64,6 +64,7 @@ CREATE TABLE category_common_fields
 	category_id int(11) not null,
 	common_field_id int(11) not null,
 	
+	name varchar(50),
 	template_type varchar(100),
 	template_lov varchar(200),
 
@@ -71,4 +72,35 @@ CREATE TABLE category_common_fields
 	FOREIGN key ( category_id ) references categories(id),
 	FOREIGN key ( common_field_id ) references common_fields(id)
 );
+
+
+CREATE TABLE ad_common_fields
+(
+	id int(11) NOT NULL AUTO_INCREMENT,
+	ad_id int(11) not null,
+	common_field_id int(11) not null,
+	
+	name varchar(50),
+	value varchar(100),
+
+	PRIMARY KEY (ID),
+	FOREIGN key ( ad_id ) references ads(id),
+	FOREIGN key ( common_field_id ) references category_common_fields(id) on delete cascade
+);
+
+CREATE TABLE photographs
+(
+	id int(11) NOT NULL AUTO_INCREMENT,
+	ad_id int(11) not null,
+	
+	filename varchar(50),
+	type varchar(20),
+	size int(11),
+	caption varchar(50),
+	PRIMARY KEY (ID),
+	FOREIGN key ( ad_id ) references ads(id)
+);
+
+
+"id", "filename", "type", "size", "caption"
 

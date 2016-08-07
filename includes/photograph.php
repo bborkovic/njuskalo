@@ -4,10 +4,11 @@ class Photograph extends DatabaseObject {
 
 // override parent defaults
 	protected static $table_name="photographs";
-	protected static $db_fields = array("id", "filename", "type", "size", "caption");
+	protected static $db_fields = array("id", "ad_id", "filename", "type", "size", "caption");
 	
 // database fields
 	public $id;
+	public $ad_id;
 	public $filename;
 	public $type;
 	public $size;
@@ -29,7 +30,7 @@ class Photograph extends DatabaseObject {
 		UPLOAD_ERR_EXTENSION 	=> "File upload stopped by extension."
 	);
 
-// Pass in $_FILE['uploaded_file']
+// Pass in $_FILES['uploaded_file']
 	public function attach_file( $file ) { 
 		// performing error checking
 		if(!$file || empty($file) || !is_array($file)) {
@@ -49,8 +50,10 @@ class Photograph extends DatabaseObject {
 		}
 	}
 
-	// override inherited method
+	// move image to target dir
+	// and saves info to table photographs
 	public function save() {
+		global $logged_user;
 		if(isset($this->id)) {
 			// Really just update the caption
 			$this->update();
@@ -70,8 +73,9 @@ class Photograph extends DatabaseObject {
 				$this->errors[] = "The file location was not available.";
 				return false;
 			}
-
-			$target_path = SITE_ROOT.DS.'public'.DS. $this->upload_dir .DS. $this->filename;
+			
+			$now = date("YmdHis");
+			$target_path = SITE_ROOT.DS.'public'.DS. $this->upload_dir .DS. $now . '_' . $logged_user->id . '_' . $this->filename;
 			if(file_exists($target_path)) {
 				$this->errors[] = "The file {$this->filename} already exists";
 				return false;
@@ -79,6 +83,7 @@ class Photograph extends DatabaseObject {
 
 			if( move_uploaded_file($this->temp_path, $target_path)) {
 				// Success
+				$this->filename = $now . '_' . $logged_user->id . '_' . $this->filename;
 				if($this->create()) {
 					unset($this->temp_path);
 					return true;

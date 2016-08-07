@@ -22,6 +22,8 @@ if(!$session->is_logged_in()) { redirect_to("login.php"); }
 
 	<?php output_message($message); ?>
 
+	<h5><a href="categories_index.php?parent_cat_id=<?php echo $category->parent_cat_id; ?>">Back to categories</a></h5>
+
 	<div class="row">
 		
 		<!-- display all fields from category -->
@@ -30,7 +32,9 @@ if(!$session->is_logged_in()) { redirect_to("login.php"); }
 			<table class="table table-striped">
 				<?php foreach($category_common_fields as $category_common_field): ?>
 				<tr>
-					<td><?php echo $category_common_field->name; ?></td>
+					<td><a href="category_common_fields_edit.php?id=<?php echo $category_common_field->id; ?>"><?php echo $category_common_field->name; ?></a>
+					</td>
+
 					<td><a href="remove">Remove &gt</a></td>
 				</tr>
 			<?php endforeach; ?>

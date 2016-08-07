@@ -42,11 +42,12 @@ class MySQLDatabase {
 	}
 
 	public function query_select_prepared($sql , $bind_array=[]) {
+		global $error;
 		try {
 			$sth = $this->connection->prepare($sql);
 			$sth->execute($bind_array);
 		} catch (Exception $e) {
-			global $error;
+			
 			$error->add_error($e->getMessage(), "class: Database, query_select_prepared");
 			return false;
 		}
@@ -54,11 +55,11 @@ class MySQLDatabase {
 	}
 
 	public function query_dml_prepared($sql , $bind_array=[]) {
+		global $error;
 		try {
 			$sth = $this->connection->prepare($sql);
 			$sth->execute($bind_array);
 		} catch (Exception $e) {
-			global $error;
 			$error->add_error($e->getMessage(), "class: Database, query_dml_prepared");
 			return false;
 		}

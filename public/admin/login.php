@@ -11,7 +11,7 @@ if ( isset($_POST['submit'])){ // form has been submitted!
 
 	if( $found_user) {
 		$session->login($found_user);
-		$session->message(["You have successfuly login", "success"]);
+		$url = 'http://' . $_SERVER['HTTP_HOST'] . $_SERVER['REQUEST_URI'];
 		redirect_to("index.php");
 	} else {
 		// username/pass was not found

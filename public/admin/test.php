@@ -1,12 +1,18 @@
-<?php
+<?php 
+require_once('../../includes/initialize.php');
+// if(!$session->is_logged_in()) { redirect_to("login.php"); }
+?>
 
-	require_once('../../includes/initialize.php');
+<?php require_once(SITE_ROOT.DS.'public/layouts/admin_header.php'); ?>
 
-	$category_id = 20;
-	
+<?php 
 
-$category_common_fields = CategoryCommonField::find_by_sql("select * from category_common_fields where category_id = :category_id" , [ ":category_id"=>$category_id ] );
+	echo $logged_user->id;
 
-?>	
+?>
+
+
+<?php require_once(SITE_ROOT.DS.'public/layouts/admin_footer.php'); ?>
+      
 
 

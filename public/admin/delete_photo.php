@@ -6,21 +6,22 @@
 
 <?php 
 	
-	if(empty($_GET['id'])) {
-		$session->message("No photograph ID provided.");
-		redirect_to('list_photos.php');
+	if( empty($_GET['photo_id']) || empty($_GET['ad_id']) ) {
+		$session->message(["No id provided.", "info"]);
+		redirect_to('my_ads_index.php');
 	}
 
-		$photo = Photograph::find_by_id($_GET['id']);
-		$caption = $photo->caption;
+	$ad_id = $_GET['ad_id'];
+	$photo = Photograph::find_by_id($_GET['photo_id']);
+	$caption = $photo->caption;
 
-		if( $photo && $photo->destroy()) {
-			$session->message( "The photo {$caption} was deleted");
-			redirect_to('list_photos.php');
-		} else {
-			$session->message("The photo {$caption} could not be deleted");
-			redirect_to('list_photos.php');
-		}
+	if( $photo && $photo->destroy()) {
+		$session->message( ["Photo deleted!" , "success"]);
+		redirect_to("ads_edit.php?ad_id={$ad_id}");
+	} else {
+		$session->message(["The photo {$photo->filename} could not be deleted", "error"]);
+		redirect_to("ads_edit.php?ad_id={$ad_id}");
+	}
 
 ?>
 
