@@ -35,15 +35,17 @@ class Session {
 	}
 
 	public function message($mess=[]){
-		global $message;
 		if(!empty($mess)) {
 			$_SESSION['message'] = $mess; // important
-			$message = $mess;
+			$this->message = $mess;
 			return true;
 		} else {
 			// reset message - it's been read
+			$tmp = $this->message;
+			$this->message = [];
 			unset($_SESSION['message']);
-			return $this->message;
+			return $tmp;
+			
 		}
 	}
 
