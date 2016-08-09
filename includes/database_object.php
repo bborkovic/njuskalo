@@ -8,12 +8,13 @@ class DatabaseObject {
 	// 
 
 	// database columns:
-	// public $column1;
-	// public $column2;
-
-	// and all other instance variables 
-	// 
-	// 
+	public $id;
+	public $created_at; // saved in db as unsigned integers
+	public $updated_at; // saved in db as unsigned integers
+	// im mysql use function select unix_timestamp()
+	// in php use function time()
+	// $dt = new DateTime();
+	// $dt->setTimestamp( $ts );
 
 
 	// Static database methods
@@ -66,9 +67,6 @@ class DatabaseObject {
 	}
 
 
-
-
-
  
 	// helper methods
 	private function has_attribute($attribute) {
@@ -86,6 +84,7 @@ class DatabaseObject {
 		return $attributes;
 	}
 	// End of heleper methods
+
 
 
 	// Common CRUD methods
@@ -108,6 +107,27 @@ class DatabaseObject {
 		} else {
 			return false;
 		}
+	}
+
+	public function create_ts() {
+		// this version includes timestamp attributes created_at,updated_at
+		global $database;
+		$attributes = $this->attributes();
+		
+		// id is set by database automatically
+		unset($attributes["id"]);
+
+		// array of n*?
+		$sql = "insert into " . static::$table_name . " ";
+		$sql .= " ( " . join(", ", array_keys($attributes) ) . " ,created_at,updated_at ) ";
+		$sql .= " values (:" . join(', :' , array_keys($attributes)) . ' , CURRENT_TIMESTAMP , CURRENT_TIMESTAMP)';
+
+		if ( $database->query_dml_prepared($sql, $attributes) ) {
+			$this->id = $database->last_insert_id();
+			return true;
+		} else {
+			return false;
+		}	
 	}
 
 	public function update() {
