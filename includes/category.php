@@ -41,10 +41,27 @@ class Category extends DatabaseObject {
 		return ( $cnt == 0 ) ? false : true;
 	}
 
+	public function create_cascade_common_fields(){
+		global $database;
+		if( !$this->create()) { return false; }
+		$sql =  " insert into category_common_fields ";
+		$sql .= " ( category_id,common_field_id,name,template_type,template_lov ) ";
+  	$sql .= " select " . $this->id . ",common_field_id,name,template_type,template_lov ";
+  	$sql .= " from category_common_fields where category_id = " . $this->parent_cat_id;
+
+  	if ( $database->query_dml_prepared($sql) != false ) {
+  		return true;
+  	} else {
+  		return false;
+  	}
+
+	}
+
 	// public static function has_children_category($id) {
 	// 	$cnt = self::count_by_sql("select count(*) from categories where parent_cat_id=:id", [":id"=>$id]);
 	// 	return ( $cnt == 0 ) ? false : true;
 	// }
+
 
 
 

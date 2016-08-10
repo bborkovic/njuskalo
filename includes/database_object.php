@@ -16,6 +16,8 @@ class DatabaseObject {
 	// $dt = new DateTime();
 	// $dt->setTimestamp( $ts );
 
+	// initialize object as not saved
+	public $saved = false;
 
 	// Static database methods
 	public static function find_by_sql($sql="", $bind_array=[]) {
@@ -43,6 +45,14 @@ class DatabaseObject {
 		return static::find_by_sql("select * from " . static::$table_name);
 	}
 
+	public static function find_all_ordered( $order_columns = []) {
+		$sql = "select * from " . static::$table_name;
+		if( !empty($order_columns)) {
+			$sql .= " order by " . join(', ' , $order_columns);
+		}
+		return static::find_by_sql( $sql );
+	}
+
 	public static function count_all(){
 		global $database;
 		return $database->count_by_sql_prepared("select count(*) from " . static::$table_name );
@@ -63,6 +73,7 @@ class DatabaseObject {
 				$object->$attribute = $value;
 			}
 		}
+		$object->saved = true;
 		return $object;
 	}
 
@@ -89,6 +100,8 @@ class DatabaseObject {
 
 	// Common CRUD methods
 	public function create() {
+
+		if( $this->saved ) { return false; }
 		// insert existing instance object into database
 		global $database;
 		$attributes = $this->attributes();
@@ -104,12 +117,16 @@ class DatabaseObject {
 		if ( $database->query_dml_prepared($sql, $attributes) ) {
 			$this->id = $database->last_insert_id();
 			return true;
+			$this->saved = true;
 		} else {
 			return false;
 		}
 	}
 
+	// version with created_at and updated_at timestamps
 	public function create_ts() {
+		if( $this->saved ) { return false; }
+
 		// this version includes timestamp attributes created_at,updated_at
 		global $database;
 		$attributes = $this->attributes();
@@ -120,10 +137,10 @@ class DatabaseObject {
 		// array of n*?
 		$sql = "insert into " . static::$table_name . " ";
 		$sql .= " ( " . join(", ", array_keys($attributes) ) . " ,created_at,updated_at ) ";
-		$sql .= " values (:" . join(', :' , array_keys($attributes)) . ' , CURRENT_TIMESTAMP , CURRENT_TIMESTAMP)';
-
+		$sql .= " values (:" . join(', :' , array_keys($attributes)) . ' , unix_timestamp() , unix_timestamp())';
 		if ( $database->query_dml_prepared($sql, $attributes) ) {
 			$this->id = $database->last_insert_id();
+			$this->saved = true;
 			return true;
 		} else {
 			return false;
@@ -142,6 +159,27 @@ class DatabaseObject {
 
 		$sql = "update " . static::$table_name . " ";
 		$sql .= " set " . join(", ", $attributes_for_update) . " ";
+		$sql .= " where id = :id";
+
+		$attributes['id'] = $this->id;
+
+		$records_updated = $database->query_dml_prepared($sql, $attributes);
+		return $records_updated;
+	}
+
+	// version with created_at and updated_at timestamps
+	public function update_ts() {
+		// update existing instance object into database
+		global $database;
+		$attributes = $this->attributes();
+		unset($attributes["id"]); // remove id from list
+		$attributes_for_update = array();
+		foreach($attributes as $k => $v) {
+			$attributes_for_update[] = "{$k} = :{$k}";
+		}
+
+		$sql = "update " . static::$table_name . " ";
+		$sql .= " set " . join(", ", $attributes_for_update) . " , updated_at = unix_timestamp() ";
 		$sql .= " where id = :id";
 
 		$attributes['id'] = $this->id;

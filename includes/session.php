@@ -100,6 +100,4 @@ class Session {
 
 $session = new Session();
 
-// declare this variable so it's available 
-$message = $session->message();
 ?>

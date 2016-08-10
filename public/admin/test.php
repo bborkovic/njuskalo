@@ -7,7 +7,9 @@ require_once('../../includes/initialize.php');
 
 <?php 
 
-	echo $logged_user->id;
+	$session->message([ "ovo je poruka", "info"]);
+	redirect_to('test2.php');
+	// output_message();
 
 ?>
 

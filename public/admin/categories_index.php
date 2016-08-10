@@ -13,7 +13,7 @@ if(!$session->is_logged_in()) { redirect_to("login.php"); }
 	} else { $parent_cat_id = $_GET['parent_cat_id']; }
 	$curr_category = Category::find_by_id($parent_cat_id);
 
-	$categories = Category::find_by_sql("select * from categories where parent_cat_id = :id and name <> 'root'", [":id"=>$parent_cat_id]);
+	$categories = Category::find_by_sql("select * from categories where parent_cat_id = :id and name <> 'root' order by name", [":id"=>$parent_cat_id]);
 
 
 	// find all parents
@@ -26,7 +26,7 @@ if(!$session->is_logged_in()) { redirect_to("login.php"); }
 
 <div class="panel-body">
 
-	<?php output_message($message); ?>
+	<?php output_message(); ?>
 
 	<!-- display navigation of parent categories -->
 	<ol class="breadcrumb">

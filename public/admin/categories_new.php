@@ -24,8 +24,10 @@ if( !$session->is_logged_in() ) { redirect_to("login.php"); }
 		$name=$category->name;
 		$description=$category->description;
 
-		if($category->create()) {
+		// if($category->create()) {
+		if($category->create_cascade_common_fields()) {
 			$session->message( ["Category " . $category->name . " has been saved!" , "success"] );
+
 			redirect_to("categories_index.php?parent_cat_id={$parent_cat_id}");
 		} else {
 			$session->message( ["Error saving! " . $error->get_errors() , "error"] );

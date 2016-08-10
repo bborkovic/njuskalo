@@ -34,6 +34,6 @@ require_once(LIB_PATH.DS."common_field.php");
 require_once(LIB_PATH.DS."category_common_field.php");
 require_once(LIB_PATH.DS."ad_common_field.php");
 require_once(LIB_PATH.DS."photograph.php");
-// require_once(LIB_PATH.DS."item.php");
+require_once(LIB_PATH.DS."item.php");
 
 ?>
