@@ -64,7 +64,8 @@ class MySQLDatabase {
 			return false;
 		}
 		// returns number of rows processed
-		return $sth->rowCount();
+		// return $sth->rowCount();
+		return true;
 	}
 
 	public function count_by_sql_prepared($sql, $bind_array=[]) {
