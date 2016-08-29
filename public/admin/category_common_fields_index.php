@@ -20,7 +20,7 @@ if(!$session->is_logged_in()) { redirect_to("login.php"); }
 
 <div class="panel-body">
 
-	<?php output_message($message); ?>
+	<?php output_message(); ?>
 
 	<h5><a href="categories_index.php?parent_cat_id=<?php echo $category->parent_cat_id; ?>">Back to categories</a></h5>
 

@@ -16,7 +16,7 @@ if(!$session->is_logged_in()) { redirect_to("login.php"); }
 
 <div class="panel-body">
 
-	<?php output_message($message); ?>
+	<?php output_message(); ?>
 
 	<h4>List of your ads</h4>
 
