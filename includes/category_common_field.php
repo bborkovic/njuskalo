@@ -3,7 +3,7 @@
 class CategoryCommonField extends DatabaseObject {
 
 	// table the class is related
-	protected static $table_name = "category_common_fields";
+	public static $table_name = "category_common_fields";
 	protected static $db_fields 
 		= array('id'
 					, 'category_id'

@@ -77,6 +77,16 @@ class DatabaseObject {
 		return $object;
 	}
 
+	public function find_all_children($child_class_name) {
+		
+		$child_table_name = $child_class_name::$table_name;
+		$foreign_key_name = strtolower( get_class($this) ) . "_id";
+		// echo $child_class_name . " " . $child_table_name . " " . $foreign_key_name;
+		$sql = "select * from {$child_table_name} where {$foreign_key_name} = :{$foreign_key_name}";
+		$child_objects = $child_class_name::find_by_sql($sql,[$foreign_key_name => $this->id]);
+		return $child_objects;
+	}
+
 
  
 	// helper methods

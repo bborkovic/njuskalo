@@ -3,7 +3,7 @@ require_once(LIB_PATH.DS."database.php");
 class User extends DatabaseObject {
 	
 	// table the class is related
-	protected static $table_name = "users";
+	public static $table_name = "users";
 	protected static $db_fields = array('id','username','password','first_name','last_name','city,','adress,','post_number,','phone_number,','email');
 	// columns of table users
 	public $id;
