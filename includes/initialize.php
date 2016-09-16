@@ -10,8 +10,8 @@ date_default_timezone_set('Europe/Zagreb');
 
 defined('DS') ? null : define('DS' , DIRECTORY_SEPARATOR);
 // defined('SITE_ROOT') ? null : define('SITE_ROOT', '/var/www/html/photo_gallery');
-// defined('SITE_ROOT') ? null : define('SITE_ROOT', '/var/www/html/njuskalo');
-defined('SITE_ROOT') ? null : define('SITE_ROOT', '/Library/WebServer/Documents/njuskalo');
+defined('SITE_ROOT') ? null : define('SITE_ROOT', '/var/www/html/njuskalo');
+// defined('SITE_ROOT') ? null : define('SITE_ROOT', '/Library/WebServer/Documents/njuskalo');
 
 defined('LIB_PATH') ? null : define('LIB_PATH', SITE_ROOT.DS.'includes');
 

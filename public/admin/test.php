@@ -7,9 +7,15 @@ require_once('../../includes/initialize.php');
 
 <?php 
 
-	$session->message([ "ovo je poruka", "info"]);
-	redirect_to('test2.php');
-	// output_message();
+	// $session->message([ "ovo je poruka", "info"]);
+	//redirect_to('test2.php');
+	//output_message();
+
+	echo $location;
+
+	echo $loc2;
+
+	echo "AAA";
 
 ?>
 

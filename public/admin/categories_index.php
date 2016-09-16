@@ -61,8 +61,7 @@ if(!$session->is_logged_in()) { redirect_to("login.php"); }
 	</table>
 
 	<h5>Create new category inside <strong>&lt <?php echo $curr_category->name; ?> &gt</strong></h5>
-	<a href="categories_new.php?parent_cat_id=<?php echo $parent_cat_id; ?>" class="btn btn-default">Create
-	</a>
+	<a href="categories_new.php?parent_cat_id=<?php echo $parent_cat_id; ?>" class="btn btn-default">Create</a>
 
 	
 

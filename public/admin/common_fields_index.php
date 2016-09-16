@@ -15,7 +15,7 @@ if(!$session->is_logged_in()) { redirect_to("login.php"); }
 
 <div class="panel-body">
 
-	<?php output_message($message); ?>
+	<?php output_message(); ?>
 
 
 	<!-- display the table of all categories selected -->

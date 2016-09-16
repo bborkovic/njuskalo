@@ -17,6 +17,7 @@ function redirect_to( $location = NULL ) {
 
 function output_message() {
   global $session;
+  $message = null;
   $message_array = $session->message();
   
   if( !empty($message_array)){
