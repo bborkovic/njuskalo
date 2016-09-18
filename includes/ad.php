@@ -6,6 +6,23 @@ class Ad extends DatabaseObject {
 	public static $table_name = "ads";
 	protected static $db_fields = array('id','category_id','user_id','title','description');
 	// columns of table users
+
+	public $children = array(
+		);
+
+	public $parents = array(
+		'User' => array( 
+			'table_name' => 'users',
+			'foreign_key' => 'user_id'
+			),
+		'Category' => array( // This is class Name
+			'table_name' => 'categories',
+			'foreign_key' => 'category_id'
+			)
+		);
+
+
+
 	public $id;
 	public $category_id;
 	public $user_id;

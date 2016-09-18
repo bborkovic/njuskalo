@@ -5,6 +5,19 @@ class Category extends DatabaseObject {
 	// table the class is related
 	protected static $table_name = "categories";
 	protected static $db_fields = array('id','parent_cat_id','name','description');
+	
+	public $children = array(
+		'Ad' => array( // Class Name
+			'table_name' => 'ads',
+			'foreign_key' => 'user_id'
+			),
+		'children2' => array( // This is class Name
+			'table_name' => 'table_name',
+			'foreign_key' => 'key_name'
+			)
+		);
+
+
 	// columns of table users
 	public $id;
 	public $parent_cat_id;

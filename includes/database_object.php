@@ -16,6 +16,30 @@ class DatabaseObject {
 	// $dt = new DateTime();
 	// $dt->setTimestamp( $ts );
 
+
+	public $children = array(
+		'children1' => array( // This is class Name
+			'table_name' => 'table_name',
+			'foreign_key' => 'key_name'
+			),
+		'children2' => array( // This is class Name
+			'table_name' => 'table_name',
+			'foreign_key' => 'key_name'
+			)
+		);
+
+	public $parents = array(
+		'parent1' => array( 
+			'table_name' => 'table_name',
+			'foreign_key' => 'key_name'
+			),
+		'parent2' => array( // This is class Name
+			'table_name' => 'table_name',
+			'foreign_key' => 'key_name'
+			)
+		);
+
+
 	// initialize object as not saved
 	public $saved = false;
 
@@ -77,14 +101,30 @@ class DatabaseObject {
 		return $object;
 	}
 
-	public function find_all_children($child_class_name) {
+	public function get_children($child_class_name) {
 		
 		$child_table_name = $child_class_name::$table_name;
-		$foreign_key_name = strtolower( get_class($this) ) . "_id";
+		// or
+		// $child_table_name = $this->children[$child_class_name]['table_name']
+		
+		// $foreign_key_name = strtolower( get_class($this) ) . "_id";
+		$foreign_key_name = $this->children[$child_class_name]['foreign_key'];
+
+
 		// echo $child_class_name . " " . $child_table_name . " " . $foreign_key_name;
 		$sql = "select * from {$child_table_name} where {$foreign_key_name} = :{$foreign_key_name}";
 		$child_objects = $child_class_name::find_by_sql($sql,[$foreign_key_name => $this->id]);
 		return $child_objects;
+	}
+
+	public function get_parent($parent_class_name) {
+		
+		$parent_table_name = $parent_class_name::$table_name;
+		$foreign_key_name = $this->parents[$parent_class_name]['foreign_key'];
+		// echo $child_class_name . " " . $child_table_name . " " . $foreign_key_name;
+		$sql = "select * from {$parent_table_name} where {$foreign_key_name} = :{$foreign_key_name}";
+		$parent = $parent_class_name::find_by_id($this->$foreign_key_name);
+		return $parent;
 	}
 
 

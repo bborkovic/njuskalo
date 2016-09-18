@@ -6,6 +6,24 @@ class User extends DatabaseObject {
 	public static $table_name = "users";
 	protected static $db_fields = array('id','username','password','first_name','last_name','city,','adress,','post_number,','phone_number,','email');
 	// columns of table users
+	
+	public $children = array(
+		'Ad' => array( // Class Name
+			'table_name' => 'ads',
+			'foreign_key' => 'user_id'
+			),
+		'children2' => array( // This is class Name
+			'table_name' => 'table_name',
+			'foreign_key' => 'key_name'
+			)
+		);
+
+	public $parents = array(
+		);
+
+
+
+
 	public $id;
 	public $username;
 	public $password;

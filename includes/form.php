@@ -2,7 +2,7 @@
 
 class Form {
 
-	public $class;
+	public $model_class;
 	public $fields;
 
 	public $field_types = array(
@@ -10,7 +10,7 @@ class Form {
 		);
 
 	function __construct($class_name, $fields=[]){
-		$this->class = new $class_name;
+		$this->model_class = new $class_name;
 		$this->fields = $fields;
 	}
 
