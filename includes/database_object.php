@@ -16,7 +16,7 @@ class DatabaseObject {
 	// $dt = new DateTime();
 	// $dt->setTimestamp( $ts );
 
-
+	// define children classes, it's tables and foreign_key names
 	public $children = array(
 		'children1' => array( // This is class Name
 			'table_name' => 'table_name',
@@ -28,6 +28,7 @@ class DatabaseObject {
 			)
 		);
 
+	// define parent classes, it's tables and foreign_key names
 	public $parents = array(
 		'parent1' => array( 
 			'table_name' => 'table_name',
@@ -166,8 +167,8 @@ class DatabaseObject {
 
 		if ( $database->query_dml_prepared($sql, $attributes) ) {
 			$this->id = $database->last_insert_id();
-			return true;
 			$this->saved = true;
+			return true;
 		} else {
 			return false;
 		}

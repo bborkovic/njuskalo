@@ -35,7 +35,7 @@ class User extends DatabaseObject {
 	public $phone_number;
 	public $email;
 
-	public $validation = array(
+	public $validations = array(
 		"username" => array(
 			"label" => "Username",
 			"rule" => "alphaNumeric",
@@ -45,6 +45,15 @@ class User extends DatabaseObject {
 			"minlength" => 5,
 			"message" => "Username is not correct"
 			),
+		"password" => array(
+			"label" => "Password",
+			"rule" => "alphaNumeric",
+			"required" => true,
+			"allowEmpty" => false,
+			"maxlength" => 20,
+			"minlength" => 5,
+			"message" => "Password is not correct"
+			),
 		"first_name" => array(
 			"label" => "First Name",
 			"rule" => "alphaNumeric",
@@ -53,7 +62,34 @@ class User extends DatabaseObject {
 			"maxlength" => 20,
 			"minlength" => 5,
 			"message" => "First name is not correct"
-			)
+			),
+		"last_name" => array(
+			"label" => "Last Name",
+			"rule" => "alphaNumeric",
+			"required" => false,
+			"allowEmpty" => false,
+			"maxlength" => 20,
+			"minlength" => 5,
+			"message" => "Last name is not correct"
+			),
+		"post_number" => array(
+			"label" => "Post Number",
+			"rule" => "Numberic",
+			"required" => false,
+			"allowEmpty" => false,
+			"maxlength" => 20,
+			"minlength" => 5,
+			"message" => "Post Number is not correct"
+			),
+		"email" => array(
+			"label" => "email",
+			"rule" => "email",
+			"required" => false,
+			"allowEmpty" => false,
+			"maxlength" => 20,
+			"minlength" => 5,
+			"message" => "Email is not correct"
+			),
 	);
 
 

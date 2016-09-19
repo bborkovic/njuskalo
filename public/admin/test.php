@@ -7,17 +7,21 @@ require_once('../../includes/initialize.php');
 
 <?php 
 
-	// $session->message([ "ovo je poruka", "info"]);
-	//redirect_to('test2.php');
-	//output_message();
 
-	echo $location;
-
-	echo $loc2;
-
-	echo "AAA";
 
 ?>
+
+
+<div class="panel-body">
+	<?php // Render User form
+		$user = User::find_by_id(1);
+		$form = new Form($user, array("username", "first_name", "last_name", "post_number", "phone_number", "email")  );
+		$form->validations['phone_number']['label'] = "Phone Number";
+		$form->method = "post";
+		$form->action = "link_to_action.php?id=100";
+		$form->render();
+	?>
+</div>
 
 
 <?php require_once(SITE_ROOT.DS.'public/layouts/admin_footer.php'); ?>
