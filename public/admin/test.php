@@ -15,14 +15,15 @@ require_once('../../includes/initialize.php');
 <div class="panel-body">
 
 	<?php 
-		$user = User::find_by_id(2);
-		print $user->username;
-		$user->adress = "Zagreb";
 
-		print "<br/>";
-		print $user->adress;
+		$user = User::find_by_id(1);
+		$form = new Form($user, ["username", "password", "first_name", "last_name", "post_number"] );
 
-		$user->update();
+		$form->validate_field("username" , "");
+
+		echo "<br/><br/>Validation Errors:<br/>";
+		print_r($form->validation_errors);
+
 
 
 	?>

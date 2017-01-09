@@ -10,6 +10,7 @@ class Form {
 	public $field_types = array(
 		"alphaNumeric" => "text"
 		);
+	public $validation_errors;
 
 	function __construct($class_name, $fields=[]){
 		if(is_object($class_name)) {
@@ -76,6 +77,46 @@ class Form {
 		}
 		return $this->model_class;
 	}
+
+	public function validate_fields() {
+		foreach ($this->fields as $field) {
+			echo "Validating field " . $field . "<br/>";
+			$this->validate_field( $field , $this->model_class->$field);
+		}
+		return true;
+	}
+
+	public function validate_field( $field, $value) {
+		$validation_rules = $this->validations[$field];
+		print_r($validation_rules);
+
+		if( array_key_exists("allowEmpty", $validation_rules) ){
+			if ( strlen($value) == 0 and !$validation_rules["allowEmpty"] ){
+				$this->validation_errors[$field] = "Not Allow Empty!";
+				return;
+			}
+		}
+
+		# Check length
+		if( array_key_exists("minlength", $validation_rules) ){
+			if ( strlen($value) < $validation_rules['minlength'] ) {
+				$this->validation_errors[$field] = "Lenght should be > " . $validation_rules['minlength'];
+				return;
+			}
+		}
+
+		if( array_key_exists("maxlength", $validation_rules) ){
+			if ( strlen($value) > $validation_rules['maxlength'] ) {
+				$this->validation_errors[$field] = "Lenght should be < " . $validation_rules['maxlength'];
+				return;
+			}
+		}
+
+
+
+
+	}
+
 
 }
 

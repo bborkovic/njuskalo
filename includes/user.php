@@ -58,7 +58,7 @@ class User extends DatabaseObject {
 			"label" => "First Name",
 			"rule" => "alphaNumeric",
 			"required" => false,
-			"allowEmpty" => false,
+			"allowEmpty" => true,
 			"maxlength" => 20,
 			"minlength" => 5,
 			"message" => "First name is not correct"
@@ -74,7 +74,7 @@ class User extends DatabaseObject {
 			),
 		"post_number" => array(
 			"label" => "Post Number",
-			"rule" => "Numberic",
+			"rule" => "Numeric",
 			"required" => false,
 			"allowEmpty" => false,
 			"maxlength" => 20,
