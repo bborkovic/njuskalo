@@ -13,14 +13,20 @@ require_once('../../includes/initialize.php');
 
 
 <div class="panel-body">
-	<?php // Render User form
-		$user = User::find_by_id(1);
-		$form = new Form($user, array("username", "first_name", "last_name", "post_number", "phone_number", "email")  );
-		$form->validations['phone_number']['label'] = "Phone Number";
-		$form->method = "post";
-		$form->action = "link_to_action.php?id=100";
-		$form->render();
+
+	<?php 
+		$user = User::find_by_id(2);
+		print $user->username;
+		$user->adress = "Zagreb";
+
+		print "<br/>";
+		print $user->adress;
+
+		$user->update();
+
+
 	?>
+
 </div>
 
 

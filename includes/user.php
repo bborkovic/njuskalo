@@ -4,7 +4,7 @@ class User extends DatabaseObject {
 	
 	// table the class is related
 	public static $table_name = "users";
-	protected static $db_fields = array('id','username','password','first_name','last_name','city,','adress,','post_number,','phone_number,','email');
+	protected static $db_fields = array('id','username','password','first_name','last_name','city','adress','post_number','phone_number','email');
 	// columns of table users
 	
 	public $children = array(

@@ -43,7 +43,7 @@ require_once('../../includes/initialize.php');
 		<?php foreach ($users as $user): ?>
 			<tr>
 				<td><?php echo $user->username; ?></td>
-				<td><a href="users_edit.php?category_id=<?php echo $user->id;?>">Edit</a></td>
+				<td><a href="users_edit.php?id=<?php echo $user->id;?>">Edit</a></td>
 			</tr>
 		<?php endforeach; ?>
 

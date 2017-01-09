@@ -39,19 +39,6 @@ class Form {
 		}
 		$this->render_button();
 		$this->render_form_end();
-
-
-		// echo "<form role=\"form\" action=\"ads_new.php?category_id=1\" method=\"post\">";
-		// echo "<div class=\"form-group\">";
-		// echo "<label for=\"title\">Naslov Oglasa:</label>";
-		// echo "<input type=\"text\" class=\"form-control\" name=\"title\" value=\"enter something\"/>";
-		// echo "</div>";
-		// echo "<button type=\"submit\" class=\"btn btn-default\" name=\"submit\" value=\"Upload\">Objavi</button>";
-		// echo "<button type=\"button\" class=\"btn btn-default\">";
-		// echo "<a href=\"categories_index.php?parent_cat_id=1\">Cancel</a>";
-		// echo "</button>";
-		// echo "</form>";
-
 	}
 
 	public function render_form_begin(){
