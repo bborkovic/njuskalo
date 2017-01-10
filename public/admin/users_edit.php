@@ -5,22 +5,29 @@ if(!$session->is_logged_in()) { redirect_to("login.php"); }
 
 <!-- Controller -->
 <?php 
-
+		
 	if( isset($_GET['id'])) {
 		$user = User::find_by_id( $_GET['id'] );
 	}
 
 	if(isset($_POST['submit'])) {
 		$form = new Form($user, ["username", "password", "first_name", "last_name", "post_number"] );
+		$form->action = "users_edit.php?id=" . $user->id; // Single Page submit	
+		$form->method = "post";
 		$user = $form->parsePost($_POST, true);
 
-		// Save user to DB and display message if necessary
-		if($user->update()) {
-			$session->message( ["User {$user->username} has been saved!" , "success"] );
-			redirect_to("users_index.php");
+		if( $form->has_validation_errors() ) {
+			$error_fields = implode( ", " , array_keys($form->validation_errors) );
+			$session->message( ["Validation Errors! " . $error_fields, "error"] );
 		} else {
-			$session->message( ["Error saving! " . $error->get_errors() , "error"] );
-			redirect_to("users_new.php");
+			// Save user to DB and display message if necessary
+			if($user->update()) {
+				$session->message( ["User {$user->username} has been saved!" , "success"] );
+				redirect_to("users_edit.php?id=$user->id");
+			} else {
+				$session->message( ["Error saving! " . $error->get_errors() , "error"] );
+				redirect_to("users_edit.php?id=$user->id");
+			}
 		}
 	}
 
@@ -37,9 +44,11 @@ if(!$session->is_logged_in()) { redirect_to("login.php"); }
 
 	<?php
 
-		$form = new Form($user, ["username", "password", "first_name", "last_name", "post_number"] );
-		$form->method = "post";
-		$form->action = "users_edit.php?id=" . $user->id; // Single Page submit
+		if(!isset($form)) {
+			$form = new Form($user, ["username", "password", "first_name", "last_name", "post_number"] );
+			$form->method = "post";
+			$form->action = "users_edit.php?id=" . $user->id; // Single Page submit			
+		}
 		$form->render();
 
 	?>

@@ -1,2 +1,84 @@
 2016-07-22 16:10:01 | action: poruka ....
 2016-07-22 16:10:02 | action: poruka ....
+2017-01-10 10:28:38 | jedan: dva
+2017-01-10 10:29:03 | Update, sql = : update users  set username = :username, password = :password, first_name = :first_name, last_name = :last_name, city = :city, adress = :adress, post_number = :post_number, phone_number = :phone_number, email = :email  where id = :id
+2017-01-10 10:29:03 | Update, values = : korisnik, pass, Janko, Borkovic, , , 11234, , , 4
+2017-01-10 10:29:03 | Update, records: : 1
+2017-01-10 10:29:42 | Update, sql = : update users  set username = :username, password = :password, first_name = :first_name, last_name = :last_name, city = :city, adress = :adress, post_number = :post_number, phone_number = :phone_number, email = :email  where id = :id
+2017-01-10 10:29:42 | Update, values = : korisnik, pass, Janko, Borkovic, , , 11234a, , , 4
+2017-01-10 10:29:42 | Update, records: : 1
+2017-01-10 10:44:34 | Update, sql = : update users  set username = :username, password = :password, first_name = :first_name, last_name = :last_name, city = :city, adress = :adress, post_number = :post_number, phone_number = :phone_number, email = :email  where id = :id
+2017-01-10 10:44:34 | Update, values = : leon, leon, BLA BLA, cla cla Cla, , , 102b, , , 2
+2017-01-10 10:44:34 | Update, records: : 1
+2017-01-10 11:22:57 | Update, sql = : update users  set username = :username, password = :password, first_name = :first_name, last_name = :last_name, city = :city, adress = :adress, post_number = :post_number, phone_number = :phone_number, email = :email  where id = :id
+2017-01-10 11:22:57 | Update, values = : korisnik, pass, Janko, Borkovic, , , 1123467, , , 4
+2017-01-10 11:22:57 | Update, records: : 1
+2017-01-10 11:23:17 | Update, sql = : update users  set username = :username, password = :password, first_name = :first_name, last_name = :last_name, city = :city, adress = :adress, post_number = :post_number, phone_number = :phone_number, email = :email  where id = :id
+2017-01-10 11:23:17 | Update, values = : korisnik, pass, , Borkovic, , , 1123467, , , 4
+2017-01-10 11:23:17 | Update, records: : 1
+2017-01-10 11:34:14 | Update, sql = : update users  set username = :username, password = :password, first_name = :first_name, last_name = :last_name, city = :city, adress = :adress, post_number = :post_number, phone_number = :phone_number, email = :email  where id = :id
+2017-01-10 11:34:14 | Update, values = : korisnik, pass, Janko, Borkovic, , , 1123467, , , 4
+2017-01-10 11:34:14 | Update, records: : 1
+2017-01-10 11:34:19 | Update, sql = : update users  set username = :username, password = :password, first_name = :first_name, last_name = :last_name, city = :city, adress = :adress, post_number = :post_number, phone_number = :phone_number, email = :email  where id = :id
+2017-01-10 11:34:19 | Update, values = : korisnik, pass, Janko2, Borkovic, , , 1123467, , , 4
+2017-01-10 11:34:19 | Update, records: : 1
+2017-01-10 11:42:51 | Update, sql = : update users  set username = :username, password = :password, first_name = :first_name, last_name = :last_name, city = :city, adress = :adress, post_number = :post_number, phone_number = :phone_number, email = :email  where id = :id
+2017-01-10 11:42:51 | Update, values = : korisnik, pass, Janko, Borkovic, , , 10450, , , 4
+2017-01-10 11:42:51 | Update, records: : 1
+2017-01-10 11:44:38 | Update, sql = : update users  set username = :username, password = :password, first_name = :first_name, last_name = :last_name, city = :city, adress = :adress, post_number = :post_number, phone_number = :phone_number, email = :email  where id = :id
+2017-01-10 11:44:38 | Update, values = : korisnik, pass, Janko, Borkovic, , , 10450, , , 4
+2017-01-10 11:44:38 | Update, records: : 1
+2017-01-10 12:22:43 | Update, sql = : update users  set username = :username, password = :password, first_name = :first_name, last_name = :last_name, city = :city, adress = :adress, post_number = :post_number, phone_number = :phone_number, email = :email  where id = :id
+2017-01-10 12:22:43 | Update, values = : korisnik, pass, Janko, Borkovic, , , 10450, , , 4
+2017-01-10 12:22:43 | Update, records: : 1
+2017-01-10 12:32:53 | Update, sql = : update users  set username = :username, password = :password, first_name = :first_name, last_name = :last_name, city = :city, adress = :adress, post_number = :post_number, phone_number = :phone_number, email = :email  where id = :id
+2017-01-10 12:32:53 | Update, values = : korisnik2, pass1, First Name, Last Name, , , 111235, , , 7
+2017-01-10 12:32:53 | Update, records: : 1
+2017-01-10 14:52:10 | Update, sql = : update users  set username = :username, password = :password, first_name = :first_name, last_name = :last_name, city = :city, adress = :adress, post_number = :post_number, phone_number = :phone_number, email = :email  where id = :id
+2017-01-10 14:52:10 | Update, values = : testuser, testuser, testuser, testuser, , , 10001, , , 8
+2017-01-10 14:52:10 | Update, records: : 1
+2017-01-10 14:52:21 | Update, sql = : update users  set username = :username, password = :password, first_name = :first_name, last_name = :last_name, city = :city, adress = :adress, post_number = :post_number, phone_number = :phone_number, email = :email  where id = :id
+2017-01-10 14:52:21 | Update, values = : testuser, testuser, testuser, testuser, , , 10002, , , 8
+2017-01-10 14:52:21 | Update, records: : 1
+2017-01-10 14:53:51 | Update, sql = : update users  set username = :username, password = :password, first_name = :first_name, last_name = :last_name, city = :city, adress = :adress, post_number = :post_number, phone_number = :phone_number, email = :email  where id = :id
+2017-01-10 14:53:51 | Update, values = : testuser, testuser, testuser, testuser, , , 10003, , , 8
+2017-01-10 14:53:51 | Update, records: : 1
+2017-01-10 14:55:03 | Update, sql = : update users  set username = :username, password = :password, first_name = :first_name, last_name = :last_name, city = :city, adress = :adress, post_number = :post_number, phone_number = :phone_number, email = :email  where id = :id
+2017-01-10 14:55:03 | Update, values = : testuser, testuser, testuser, testuser, , , 10004, , , 8
+2017-01-10 14:55:03 | Update, records: : 1
+2017-01-10 14:55:10 | Update, sql = : update users  set username = :username, password = :password, first_name = :first_name, last_name = :last_name, city = :city, adress = :adress, post_number = :post_number, phone_number = :phone_number, email = :email  where id = :id
+2017-01-10 14:55:10 | Update, values = : testuser, testuser, testuser, testuser, , , 10005, , , 8
+2017-01-10 14:55:10 | Update, records: : 1
+2017-01-10 14:55:15 | Update, sql = : update users  set username = :username, password = :password, first_name = :first_name, last_name = :last_name, city = :city, adress = :adress, post_number = :post_number, phone_number = :phone_number, email = :email  where id = :id
+2017-01-10 14:55:15 | Update, values = : testuser, testuser, testuser, testuser, , , 10006, , , 8
+2017-01-10 14:55:15 | Update, records: : 1
+2017-01-10 14:57:30 | Update, sql = : update users  set username = :username, password = :password, first_name = :first_name, last_name = :last_name, city = :city, adress = :adress, post_number = :post_number, phone_number = :phone_number, email = :email  where id = :id
+2017-01-10 14:57:30 | Update, values = : testuser, testuser, testuser, testuser, , , 10001, , , 8
+2017-01-10 14:57:30 | Update, records: : 1
+2017-01-10 15:06:41 | Update, sql = : update users  set username = :username, password = :password, first_name = :first_name, last_name = :last_name, city = :city, adress = :adress, post_number = :post_number, phone_number = :phone_number, email = :email  where id = :id
+2017-01-10 15:06:41 | Update, values = : bborkovic, pass, Boris, Borkovic, , , 10451, , bborkovic@gmail.com, 1
+2017-01-10 15:06:41 | Update, records: : 1
+2017-01-10 15:06:46 | Update, sql = : update users  set username = :username, password = :password, first_name = :first_name, last_name = :last_name, city = :city, adress = :adress, post_number = :post_number, phone_number = :phone_number, email = :email  where id = :id
+2017-01-10 15:06:46 | Update, values = : bborkovic, pass, Boris, Borkovic, , , 10452, , bborkovic@gmail.com, 1
+2017-01-10 15:06:46 | Update, records: : 1
+2017-01-10 15:07:00 | Update, sql = : update users  set username = :username, password = :password, first_name = :first_name, last_name = :last_name, city = :city, adress = :adress, post_number = :post_number, phone_number = :phone_number, email = :email  where id = :id
+2017-01-10 15:07:00 | Update, values = : korisnik, pass, Janko, Borkovic, , , 10451, , , 4
+2017-01-10 15:07:00 | Update, records: : 1
+2017-01-10 15:07:04 | Update, sql = : update users  set username = :username, password = :password, first_name = :first_name, last_name = :last_name, city = :city, adress = :adress, post_number = :post_number, phone_number = :phone_number, email = :email  where id = :id
+2017-01-10 15:07:04 | Update, values = : korisnik, pass, Janko, Borkovic, , , 10452, , , 4
+2017-01-10 15:07:04 | Update, records: : 1
+2017-01-10 15:07:10 | Update, sql = : update users  set username = :username, password = :password, first_name = :first_name, last_name = :last_name, city = :city, adress = :adress, post_number = :post_number, phone_number = :phone_number, email = :email  where id = :id
+2017-01-10 15:07:10 | Update, values = : korisnik, pass, Janko, Borkovic, , , 10453, , , 4
+2017-01-10 15:07:10 | Update, records: : 1
+2017-01-10 15:07:31 | Update, sql = : update users  set username = :username, password = :password, first_name = :first_name, last_name = :last_name, city = :city, adress = :adress, post_number = :post_number, phone_number = :phone_number, email = :email  where id = :id
+2017-01-10 15:07:31 | Update, values = : korisnik, pass, Janko, Borkovic, , , 10454, , , 4
+2017-01-10 15:07:31 | Update, records: : 1
+2017-01-10 15:11:51 | Update, sql = : update users  set username = :username, password = :password, first_name = :first_name, last_name = :last_name, city = :city, adress = :adress, post_number = :post_number, phone_number = :phone_number, email = :email  where id = :id
+2017-01-10 15:11:51 | Update, values = : testuser, testuser, testuser, testuser, , , 10002, , , 8
+2017-01-10 15:11:51 | Update, records: : 1
+2017-01-10 15:12:40 | Update, sql = : update users  set username = :username, password = :password, first_name = :first_name, last_name = :last_name, city = :city, adress = :adress, post_number = :post_number, phone_number = :phone_number, email = :email  where id = :id
+2017-01-10 15:12:40 | Update, values = : testuser, testuser, testuser, testuser, , , 10005, , , 8
+2017-01-10 15:12:40 | Update, records: : 1
+2017-01-10 15:17:43 | Update, sql = : update users  set username = :username, password = :password, first_name = :first_name, last_name = :last_name, city = :city, adress = :adress, post_number = :post_number, phone_number = :phone_number, email = :email  where id = :id
+2017-01-10 15:17:43 | Update, values = : testuser, testuser, testuser, testuser, , , 10001, , , 8
+2017-01-10 15:17:43 | Update, records: : 1

@@ -214,7 +214,11 @@ class DatabaseObject {
 
 		$attributes['id'] = $this->id;
 
+		log_action("Update, sql = ", $sql);
+		log_action("Update, values = ", implode( ", " , $attributes) );
 		$records_updated = $database->query_dml_prepared($sql, $attributes);
+		log_action("Update, records: ", $records_updated);
+
 		return $records_updated;
 	}
 

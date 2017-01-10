@@ -51,14 +51,14 @@ class User extends DatabaseObject {
 			"required" => true,
 			"allowEmpty" => false,
 			"maxlength" => 20,
-			"minlength" => 5,
+			"minlength" => 2,
 			"message" => "Password is not correct"
 			),
 		"first_name" => array(
 			"label" => "First Name",
 			"rule" => "alphaNumeric",
 			"required" => false,
-			"allowEmpty" => true,
+			"allowEmpty" => false,
 			"maxlength" => 20,
 			"minlength" => 5,
 			"message" => "First name is not correct"

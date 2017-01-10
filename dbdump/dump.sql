@@ -1,8 +1,8 @@
--- MySQL dump 10.13  Distrib 5.6.31, for debian-linux-gnu (x86_64)
+-- MySQL dump 10.13  Distrib 5.6.33, for debian-linux-gnu (x86_64)
 --
 -- Host: localhost    Database: njuskalo
 -- ------------------------------------------------------
--- Server version	5.6.31-0ubuntu0.14.04.2
+-- Server version	5.6.33-0ubuntu0.14.04.1
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -66,7 +66,7 @@ CREATE TABLE `ads` (
   KEY `user_id` (`user_id`),
   CONSTRAINT `ads_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`) ON DELETE CASCADE,
   CONSTRAINT `ads_ibfk_2` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=41 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=50 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -75,7 +75,7 @@ CREATE TABLE `ads` (
 
 LOCK TABLES `ads` WRITE;
 /*!40000 ALTER TABLE `ads` DISABLE KEYS */;
-INSERT INTO `ads` VALUES (40,58,1,'Prodajem skodu octaviu','default value','2016-08-10 13:18:38','2016-08-10 13:18:38');
+INSERT INTO `ads` VALUES (40,58,1,'Prodajem skodu octaviu','default value','2016-08-10 13:18:38','2016-08-10 13:18:38'),(48,58,1,'title','desc','2016-09-19 10:36:57','2016-09-19 10:36:57'),(49,58,1,'title','desc','2016-09-19 10:39:38','2016-09-19 10:39:38');
 /*!40000 ALTER TABLE `ads` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -94,7 +94,7 @@ CREATE TABLE `categories` (
   PRIMARY KEY (`id`),
   KEY `parent_cat_id` (`parent_cat_id`),
   CONSTRAINT `categories_ibfk_1` FOREIGN KEY (`parent_cat_id`) REFERENCES `categories` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=59 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=60 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -103,7 +103,7 @@ CREATE TABLE `categories` (
 
 LOCK TABLES `categories` WRITE;
 /*!40000 ALTER TABLE `categories` DISABLE KEYS */;
-INSERT INTO `categories` VALUES (4,4,'root',NULL),(58,4,'Auto Moto','');
+INSERT INTO `categories` VALUES (4,4,'root',NULL),(58,4,'Auto Moto',''),(59,4,'Category2','Category2 ');
 /*!40000 ALTER TABLE `categories` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -126,7 +126,7 @@ CREATE TABLE `category_common_fields` (
   KEY `common_field_id` (`common_field_id`),
   CONSTRAINT `category_common_fields_ibfk_1` FOREIGN KEY (`category_id`) REFERENCES `categories` (`id`) ON DELETE CASCADE,
   CONSTRAINT `category_common_fields_ibfk_2` FOREIGN KEY (`common_field_id`) REFERENCES `common_fields` (`id`) ON DELETE CASCADE
-) ENGINE=InnoDB AUTO_INCREMENT=65 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=66 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -135,7 +135,7 @@ CREATE TABLE `category_common_fields` (
 
 LOCK TABLES `category_common_fields` WRITE;
 /*!40000 ALTER TABLE `category_common_fields` DISABLE KEYS */;
-INSERT INTO `category_common_fields` VALUES (59,58,3,'Lokacija Vozila',NULL,NULL),(60,58,4,'Cijena',NULL,NULL),(61,58,5,'Motor',NULL,NULL),(62,58,6,'Radni obujam(ccm)',NULL,NULL),(63,58,7,'Snaga motora',NULL,NULL),(64,58,8,'Kilometri',NULL,NULL);
+INSERT INTO `category_common_fields` VALUES (59,58,3,'Lokacija Vozila',NULL,NULL),(60,58,4,'Cijena',NULL,NULL),(61,58,5,'Motor',NULL,NULL),(62,58,6,'Radni obujam(ccm)',NULL,NULL),(63,58,7,'Snaga motora',NULL,NULL),(64,58,8,'Kilometri',NULL,NULL),(65,58,1,'Marka',NULL,NULL);
 /*!40000 ALTER TABLE `category_common_fields` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -183,7 +183,7 @@ CREATE TABLE `common_fields` (
 
 LOCK TABLES `common_fields` WRITE;
 /*!40000 ALTER TABLE `common_fields` DISABLE KEYS */;
-INSERT INTO `common_fields` VALUES (1,'Marka',NULL,NULL),(2,'Model',NULL,NULL),(3,'Lokacija Vozila',NULL,NULL),(4,'Cijena',NULL,NULL),(5,'Motor',NULL,NULL),(6,'Radni obujam(ccm)',NULL,NULL),(7,'Snaga motora',NULL,NULL),(8,'Kilometri',NULL,NULL);
+INSERT INTO `common_fields` VALUES (1,'Marka',NULL,NULL),(2,'Model',NULL,NULL),(3,'Lokacija Vozila','LOV','Zagreb,Zagrebacka,Varazdinska,Vinkovacka'),(4,'Cijena',NULL,NULL),(5,'Motor',NULL,NULL),(6,'Radni obujam(ccm)',NULL,NULL),(7,'Snaga motora',NULL,NULL),(8,'Kilometri',NULL,NULL);
 /*!40000 ALTER TABLE `common_fields` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -236,7 +236,7 @@ CREATE TABLE `users` (
   `phone_number` varchar(30) DEFAULT NULL,
   `email` varchar(30) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -245,7 +245,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'bborkovic','pass',NULL,NULL,NULL,NULL,NULL,NULL,NULL),(2,'leon','leon',NULL,NULL,NULL,NULL,NULL,NULL,NULL);
+INSERT INTO `users` VALUES (1,'bborkovic','pass','Boris','Borkovic',NULL,NULL,10450,NULL,'bborkovic@gmail.com'),(2,'leon','leon','BLA BLA','cla cla Cla',NULL,NULL,102,NULL,NULL),(3,'mborkovic','aaabbbccc','Marko','Borkovic',NULL,NULL,NULL,NULL,NULL),(4,'korisnik','pass','Janko','Borkovic',NULL,NULL,10450,NULL,NULL),(7,'korisnik2','pass1','First Name','Last Name',NULL,NULL,111235,NULL,NULL),(8,'testuser','testuser','testuser','testuser',NULL,NULL,10001,NULL,NULL);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -258,4 +258,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2016-08-10 15:47:18
+-- Dump completed on 2017-01-10 14:59:49
