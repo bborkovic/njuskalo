@@ -12,7 +12,7 @@ if(!$session->is_logged_in()) { redirect_to("login.php"); }
 
 	if(isset($_POST['submit'])) {
 		$form = new Form($user, ["username", "password", "first_name", "last_name", "post_number"] );
-		$form->action = "users_edit.php?id=" . $user->id; // Single Page submit	
+		$form->action = "users_edit.php?id=" . $user->id;
 		$form->method = "post";
 		$user = $form->parsePost($_POST, true);
 
